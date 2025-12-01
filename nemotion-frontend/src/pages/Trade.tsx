@@ -1,17 +1,19 @@
-// pages/Trade.tsx
 import React, { useState } from 'react';
 import ClassicCandleChart from '../components/ClassicCandleChart';
 import './Trade.css';
 
-const pairs = ['BTC/USD', 'ETH/USD', 'SOL/USD', 'XRP/USD', 'ADA/USD'];
+const pairs = ['EUR/USD', 'GBP/USD', 'USD/JPY', 'USD/CHF', 'AUD/USD'];
 const strategies = [
   'Scalping', 'Swing', 'Trend Following', 'Mean Reversion',
   'Breakout', 'Momentum', 'Grid', 'Arbitrage'
 ];
 
+const intervals = ['1min', '5min', '15min', '30min', '1h', '4h', '1day'];
+
 const Trade: React.FC = () => {
   const [selectedPair, setSelectedPair] = useState(pairs[0]);
   const [selectedStrategy, setSelectedStrategy] = useState(strategies[0]);
+  const [interval, setInterval] = useState('1min');
   const [mode, setMode] = useState<'manual' | 'auto'>('manual');
   const [positionSize, setPositionSize] = useState(1);
   const [stopLoss, setStopLoss] = useState(0);
@@ -49,6 +51,8 @@ const Trade: React.FC = () => {
 
       <div className="trade-main">
         <div className="trade-left">
+          
+          {/* PAIRS BUTTONS */}
           <div className="pair-buttons">
             {pairs.map(p => (
               <button
@@ -61,11 +65,26 @@ const Trade: React.FC = () => {
             ))}
           </div>
 
+          {/* TIMEFRAME BUTTONS */}
+          <div className="interval-buttons">
+            {intervals.map(int => (
+              <button
+                key={int}
+                className={`interval-btn ${int === interval ? 'active' : ''}`}
+                onClick={() => setInterval(int)}
+              >
+                {int}
+              </button>
+            ))}
+          </div>
+
+          {/* CANDLE CHART */}
           <div className="chart-wrapper">
-            <ClassicCandleChart pair={selectedPair} />
+            <ClassicCandleChart pair={selectedPair} interval={interval} />
           </div>
         </div>
 
+        {/* TRADING PANEL RIGHT SIDE */}
         <div className="trade-right">
           <div className="panel">
             <h3>Trade Panel</h3>

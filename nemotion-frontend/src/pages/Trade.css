@@ -218,3 +218,37 @@
   background: var(--gold);
   color: #111;
 }
+/* Intervalles du chart (1m, 5m, 15m...) */
+.interval-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.interval-btn {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.05);
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.interval-btn:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.interval-btn.active {
+  background: var(--gold);
+  color: #111;
+  border-color: var(--gold);
+}
+
+/* Ajuste le conteneur du chart */
+.chart-box {
+  width: 100%;
+  height: 100%;
+}
