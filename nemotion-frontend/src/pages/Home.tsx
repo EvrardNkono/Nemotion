@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './Home.css';
 import ClassicCandleChart from '../components/ClassicCandleChart';
 import { useNavigate } from 'react-router-dom';
