@@ -10,22 +10,22 @@ type Candle = {
   close: number;
 };
 
-interface ClassicCandleChartProps {
-  symbol?: string; // exemple: 'BTCUSDT'
+// 👇 On change "symbol" → "pair"
+export interface ClassicCandleChartProps {
+  pair?: string; // ex: 'BTCUSDT'
 }
 
-const ClassicCandleChart: React.FC<ClassicCandleChartProps> = ({ symbol = 'BTCUSDT' }) => {
+const ClassicCandleChart: React.FC<ClassicCandleChartProps> = ({ pair = 'BTCUSDT' }) => {
   const [data, setData] = useState<Candle[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=1h&limit=24`
+          `https://api.binance.com/api/v3/klines?symbol=${pair}&interval=1h&limit=24`
         );
         const json: any[][] = await res.json();
 
-        // Binance retourne [openTime, open, high, low, close, ...] 
         const candles: Candle[] = json.map(([openTime, open, high, low, close]) => ({
           x: new Date(openTime),
           open: parseFloat(open),
@@ -41,14 +41,19 @@ const ClassicCandleChart: React.FC<ClassicCandleChartProps> = ({ symbol = 'BTCUS
     };
 
     fetchData();
-    const interval = setInterval(fetchData, 5 * 60 * 1000); // mise à jour toutes les 5 min
+    const interval = setInterval(fetchData, 5 * 60 * 1000);
     return () => clearInterval(interval);
-  }, [symbol]);
+  }, [pair]);
 
-  if (data.length === 0) return <div style={{ color: '#fff' }}>Loading chart...</div>;
+  if (data.length === 0) {
+    return <div style={{ color: '#fff' }}>Loading chart...</div>;
+  }
 
   return (
-    <VictoryChart domainPadding={{ x: 5 }} style={{ parent: { backgroundColor: '#000' } }}>
+    <VictoryChart
+      domainPadding={{ x: 5 }}
+      style={{ parent: { backgroundColor: '#000' } }}
+    >
       <VictoryAxis
         style={{
           axis: { stroke: '#FFD700' },
@@ -56,9 +61,13 @@ const ClassicCandleChart: React.FC<ClassicCandleChartProps> = ({ symbol = 'BTCUS
         }}
         tickFormat={(t: Date | number) => {
           const date = t instanceof Date ? t : new Date(t);
-          return `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+          return `${date.getHours().toString().padStart(2, '0')}:${date
+            .getMinutes()
+            .toString()
+            .padStart(2, '0')}`;
         }}
       />
+
       <VictoryAxis
         dependentAxis
         style={{
@@ -66,6 +75,7 @@ const ClassicCandleChart: React.FC<ClassicCandleChartProps> = ({ symbol = 'BTCUS
           tickLabels: { fill: '#fff', fontSize: 10 },
         }}
       />
+
       <VictoryCandlestick
         data={data}
         candleColors={{ positive: '#FFD700', negative: '#fff' }}
