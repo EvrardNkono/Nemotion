@@ -1,0 +1,220 @@
+/* pages/Trade.css */
+.trade-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+.trade-hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.trade-hero h1 { 
+  color: var(--gold); 
+  font-size: 2.5rem; 
+}
+
+.trade-hero p { 
+  color: var(--muted); 
+  font-size: 1.1rem;
+}
+
+.trade-main {
+  display: flex;
+  gap: 2rem;
+}
+
+.trade-left {
+  flex: 2;
+}
+
+.trade-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Graphique */
+.chart-wrapper {
+  background: var(--surface);
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.03);
+  height: 550px;
+  width: 100%;
+}
+
+/* Boutons pour sélectionner la paire */
+.pair-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.pair-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.pair-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.pair-btn.active {
+  background: var(--gold);
+  color: #111;
+}
+
+/* Panel de trade */
+.panel {
+  background: var(--surface);
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.panel h3 {
+  margin-bottom: 1rem;
+  color: var(--gold);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.8rem;
+}
+
+.form-group label { 
+  margin-bottom: 0.3rem; 
+}
+
+.form-group input, 
+.form-group select, 
+.form-group button {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: #111;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.form-group button {
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.form-group button:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* Boutons principaux */
+.btn.primary {
+  background: var(--gold);
+  color: #111;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.btn.primary:hover {
+  opacity: 0.85;
+}
+
+.btn.secondary {
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+}
+
+.btn.secondary:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* Open positions */
+.open-positions {
+  background: var(--surface);
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.open-positions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.open-positions li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Modal pour choisir stratégie */
+.strategy-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--surface);
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+}
+
+.modal-content h3 {
+  margin-bottom: 1rem;
+  color: var(--gold);
+  text-align: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.strategy-btn {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.strategy-btn:hover {
+  background: var(--gold);
+  color: #111;
+}
