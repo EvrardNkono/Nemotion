@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
-import accountIcon from './../assets/icon.png';
+import logo from './../assets/nemotion-logo.png'; 
+import accountIcon from './../assets/icon.png'; 
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="logo">
-        <img src={logo} alt="NEmotion Logo" className="logo-img"/>
+        <img src={logo} alt="NEmotion Logo" className="logo-img" />
         <span className="logo-name">NEmotion</span>
       </div>
 
