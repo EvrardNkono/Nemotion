@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
-import logo from './../assets/NEmotion-logo.png';
 import accountIcon from './../assets/icon.png';
 
 const Header: React.FC = () => {
